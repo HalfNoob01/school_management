@@ -1,0 +1,16 @@
+model Lesson {
+    id        Int      @id @default(autoincrement())
+    name      String
+    day       Day
+    startTime DateTime
+    endTime   DateTime
+    subjectId Int
+    subject   Subject  @relation(fields: [subjectId], references: [id])
+    classId   Int
+    class     Class    @relation(fields: [classId], references: [id])
+    teacherId String
+    teacher   Teacher  @relation(fields: [teacherId], references: [id])
+    exams Exam[]
+    assignment Assignment[]
+    attendance Attendance[]
+}

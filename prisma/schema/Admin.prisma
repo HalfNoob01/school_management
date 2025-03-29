@@ -1,0 +1,4 @@
+model Admin {
+  id       String @id
+  username String @unique
+}
