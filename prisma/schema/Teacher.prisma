@@ -1,16 +1,17 @@
-model Teacher{
-  id        String  @id
-  username  String  @unique
-  name   String
+model Teacher {
+  id        String    @id
+  username  String    @unique
+  name      String
   surname   String
-  email     String? @unique
-  phone     String? @unique
+  email     String?   @unique
+  phone     String?   @unique
   address   String
   img       String?
   bloodType String
   sex       UserSex
-  createdAt DateTime @default(now())
+  createdAt DateTime  @default(now())
   subjects  Subject[]
-  lesson    Lesson[]
+  lessons   Lesson[]
   classes   Class[]
+  birthday  DateTime
 }

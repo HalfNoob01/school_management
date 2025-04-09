@@ -1,6 +1,6 @@
 model Subject {
-    id       Int       @id @default(autoincrement())
-    name     String    @unique
-    teachers Teacher[]
-    lesson Lesson[]
+  id       Int       @id @default(autoincrement())
+  name     String    @unique
+  teachers Teacher[]
+  lesson   Lesson[]
 }

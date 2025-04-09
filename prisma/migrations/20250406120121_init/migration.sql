@@ -2,7 +2,7 @@
 CREATE TYPE "UserSex" AS ENUM ('MALE', 'FEMALE');
 
 -- CreateEnum
-CREATE TYPE "Day" AS ENUM ('MONDAT', 'TUESDAY', 'WEDNESDAY', 'THURSDAY', 'FRIDAY', 'SATURDAY');
+CREATE TYPE "Day" AS ENUM ('MONDAY', 'TUESDAY', 'WEDNESDAY', 'THURSDAY', 'FRIDAY', 'SATURDAY');
 
 -- CreateTable
 CREATE TABLE "Admin" (
@@ -50,7 +50,7 @@ CREATE TABLE "Class" (
     "id" SERIAL NOT NULL,
     "name" TEXT NOT NULL,
     "capacity" INTEGER NOT NULL,
-    "supervisorId" TEXT NOT NULL,
+    "supervisorId" TEXT,
     "gradeId" INTEGER NOT NULL,
 
     CONSTRAINT "Class_pkey" PRIMARY KEY ("id")
@@ -130,17 +130,19 @@ CREATE TABLE "Result" (
 CREATE TABLE "Student" (
     "id" TEXT NOT NULL,
     "username" TEXT NOT NULL,
+    "name" TEXT NOT NULL,
     "surname" TEXT NOT NULL,
     "email" TEXT,
     "phone" TEXT,
     "address" TEXT NOT NULL,
-    "img" TEXT NOT NULL,
+    "img" TEXT,
     "bloodType" TEXT NOT NULL,
     "sex" "UserSex" NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "parentId" TEXT NOT NULL,
     "classId" INTEGER NOT NULL,
     "gradeId" INTEGER NOT NULL,
+    "birthday" TIMESTAMP(3) NOT NULL,
 
     CONSTRAINT "Student_pkey" PRIMARY KEY ("id")
 );
@@ -162,10 +164,11 @@ CREATE TABLE "Teacher" (
     "email" TEXT,
     "phone" TEXT,
     "address" TEXT NOT NULL,
-    "img" TEXT NOT NULL,
+    "img" TEXT,
     "bloodType" TEXT NOT NULL,
     "sex" "UserSex" NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "birthday" TIMESTAMP(3) NOT NULL,
 
     CONSTRAINT "Teacher_pkey" PRIMARY KEY ("id")
 );
@@ -183,9 +186,6 @@ CREATE UNIQUE INDEX "Admin_username_key" ON "Admin"("username");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "Class_name_key" ON "Class"("name");
-
--- CreateIndex
-CREATE UNIQUE INDEX "Class_gradeId_key" ON "Class"("gradeId");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "Grade_level_key" ON "Grade"("level");
@@ -236,7 +236,7 @@ ALTER TABLE "Attendance" ADD CONSTRAINT "Attendance_studentId_fkey" FOREIGN KEY 
 ALTER TABLE "Attendance" ADD CONSTRAINT "Attendance_lessonId_fkey" FOREIGN KEY ("lessonId") REFERENCES "Lesson"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "Class" ADD CONSTRAINT "Class_supervisorId_fkey" FOREIGN KEY ("supervisorId") REFERENCES "Teacher"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "Class" ADD CONSTRAINT "Class_supervisorId_fkey" FOREIGN KEY ("supervisorId") REFERENCES "Teacher"("id") ON DELETE SET NULL ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "Class" ADD CONSTRAINT "Class_gradeId_fkey" FOREIGN KEY ("gradeId") REFERENCES "Grade"("id") ON DELETE RESTRICT ON UPDATE CASCADE;

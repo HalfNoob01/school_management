@@ -1,7 +1,7 @@
 model Grade {
-    id    Int @id @default(autoincrement())
-    level Int @unique
+  id    Int @id @default(autoincrement())
+  level Int @unique
 
-    students Student[]
-    classes  Class[]
+  students Student[]
+  classes  Class[]
 }

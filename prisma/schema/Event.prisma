@@ -1,11 +1,11 @@
 model Event {
-    id          Int    @id @default(autoincrement())
-    title       String
-    description String
+  id          Int    @id @default(autoincrement())
+  title       String
+  description String
 
-    startTime DateTime
-    endTime   DateTime
-    
-    classId   Int?
-    class     Class?   @relation(fields: [classId], references: [id])
+  startTime DateTime
+  endTime   DateTime
+
+  classId Int?
+  class   Class? @relation(fields: [classId], references: [id])
 }

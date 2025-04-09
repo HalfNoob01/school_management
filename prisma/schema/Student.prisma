@@ -1,20 +1,22 @@
 model Student {
   id         String       @id
   username   String       @unique
+  name       String
   surname    String
-  email      String? @unique
-  phone      String? @unique
+  email      String?      @unique
+  phone      String?      @unique
   address    String
-  img        String
+  img        String?
   bloodType  String
   sex        UserSex
   createdAt  DateTime     @default(now())
-  parentId   String
-  parent     Parent       @relation(fields: [parentId], references: [id])
+  parentId   String?     
+  parent     Parent?      @relation(fields: [parentId], references: [id], onDelete: SetNull)
   classId    Int
   class      Class        @relation(fields: [classId], references: [id])
   gradeId    Int
   grade      Grade        @relation(fields: [gradeId], references: [id])
   attendance Attendance[]
   results    Result[]
+  birthday   DateTime
 }
