@@ -34,7 +34,7 @@ export const teacherSchema = z.object({
     birthday : z.coerce.date({ message : "BirthDay is required!"}),
     sex : z.enum(["MALE","FEMALE"],{message : "Sex is requires!"}),
     bloodType : z.string().min(1,{message : "Blood Type is required!"}),
-    subjects : z.array(z.string() || z.boolean()).optional()    
+    subjects : z.any(z.string() || z.boolean()).optional()    
 })
 
 export type TeacherSchema = z.infer<typeof teacherSchema>
