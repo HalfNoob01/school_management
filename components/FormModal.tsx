@@ -82,7 +82,7 @@ const forms : {
 
 
 const FormModal = ({table,type,data,id,relatedData}:FormContainerProps & {relatedData? : any}) => {
- console.log(id)
+
   const size =  type === "create" ? "w-8 h-8" : "w-7 h-7";
   const bgColor = type === "create" ? "bg-mainYellow" : type === "update" ? "bg-mainSky" : "bg-mainPurple";
 

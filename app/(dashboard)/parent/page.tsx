@@ -6,7 +6,7 @@ import { auth } from "@clerk/nextjs/server";
 
 export default async function ParentPage() {
     const {userId} = await auth(); 
-    console.log(auth)
+
     const students = await prisma.student.findMany({
       where: {
         parentId: userId!,

@@ -38,7 +38,7 @@ const ParentForm = ({ type, data, relatedData, setOpen }: { type: "create" | "up
   }, [state.success])
 
   const { students } = relatedData
-  console.log(state.error && state.error)
+  
   return (
     <form className="flex flex-col gap-8 p-3" onSubmit={onSubmit}>
       <h1 className='text-xl font-semibold'>{type === "create" ? "Create a new parent" : "Update the parent"}</h1>
