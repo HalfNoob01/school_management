@@ -136,7 +136,7 @@ export const createTeacher = async (currentState : { success : boolean; error : 
             sex: data.sex,
             birthday: data.birthday ,
             subjects: {
-              connect: data.subjects?.map((subjectId: string) => ({
+              connect: data.subjects?.map((subjectId) => ({
                 id: parseInt(subjectId)
               }))
             }
