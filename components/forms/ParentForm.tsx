@@ -102,7 +102,7 @@ const ParentForm = ({ type, data, relatedData, setOpen }: { type: "create" | "up
         </div>
      
       </div>
-      {state.error && <span className='text-red-500'>Something went wrong - Try Hard Password</span>}
+      {state.error && <span className='text-red-500'>Something went wrong - Try Changing the values</span>}
       <button className="bg-blue-400 text-white p-2 rounded-md">{type === "create" ? "Create" : "Update"}</button>
     </form>
   )

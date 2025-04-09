@@ -167,7 +167,7 @@ const StudentForm = ({ type, data, relatedData, setOpen }: { type: "create" | "u
           {errors.gradeId?.message && <p className='text-xs text-red-400'>{errors.gradeId?.message.toString()}</p>}
         </div>
       </div>
-      {state.error && <span className='text-red-500'>Something went wrong - Try Hard Password</span>}
+      {state.error && <span className='text-red-500'>Something went wrong - Try Changing the values</span>}
       <button className="bg-blue-400 text-white p-2 rounded-md">{type === "create" ? "Create" : "Update"}</button>
     </form>
   )
